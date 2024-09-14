@@ -3,7 +3,7 @@ import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken";
 const userSchema = new mongoose.Schema({
     userName : {
-        type : string ,
+        type : String ,
         required : true ,
         unique : true ,
         lowercase : true ,
@@ -11,28 +11,28 @@ const userSchema = new mongoose.Schema({
         index : true 
     },
     email :{
-        type : string ,
+        type : String ,
         required : true ,
         unique : true ,
         lowercase : true ,
         trim : true 
     },
     fullName : {
-        type : string ,
+        type : String ,
         required : true ,
         trim : true ,
         index : true
     },
     password : {
-        type : string ,// we have to encrypt password wit bcrypt package
+        type : String ,// we have to encrypt password wit bcrypt package
         required : true 
     },
     avatar : {
-        type : string ,//cloudnary Url 
+        type : String ,//cloudnary Url 
         required : true 
     },
     coverImage : {
-        type : string ,//cloudnary url 
+        type : String ,//cloudnary url 
        
     },
     watchHistory :[ {
@@ -40,9 +40,9 @@ const userSchema = new mongoose.Schema({
         ref : "Video"
     }],
     refreshToken :{
-        type : string 
+        type : String 
     }
-},{timestamps})
+},{timestamps:true})
 
 //it is middleware(hook) , used to hashed the password before saving to the data base.
 userSchema.pre("save" , async function(next){
